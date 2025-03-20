@@ -53,3 +53,21 @@ git pull --rebase upstream v25.1.0
 ## Convention commit
 
 Préfixer nos commits avec 'easiware:' afin de bien distinguer nos modifications de celles de l'upstream.
+
+
+## Pushing Docker image into Scaleway container repository
+
+1. An acces to Scaleway console is mandatory.
+
+https://www.scaleway.com/en/docs/identity-and-access-management/organizations-and-projects/how-to/create-ssh-key/
+
+2. Api-keys are mandatories
+
+https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/
+
+### Build Docker images
+
+```bash
+yarn install
+./build-push-docker.sh
+```
