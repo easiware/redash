@@ -204,9 +204,13 @@ function useDashboard(dashboardData) {
   const [fullscreen, toggleFullscreen] = useFullscreenHandler();
   const editModeHandler = useEditModeHandler(!gridDisabled && canEditDashboard, dashboard.widgets);
 
+  // On actualise les données au premier chargement au lieu de récupérer le cache.
+  const [initialLoad, setInitialLoad] = useState(true);
+
   useEffect(() => {
     setDashboard(dashboardData);
-    loadDashboard();
+    loadDashboard(initialLoad);
+    if (initialLoad) setInitialLoad(false);
   }, [dashboardData]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
