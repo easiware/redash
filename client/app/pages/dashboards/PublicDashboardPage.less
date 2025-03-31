@@ -39,6 +39,20 @@
     font-weight: 400 !important;
   }
 
+  .refresh-btn {
+    display: flex;
+    width: auto;
+    height: 16px;
+    margin: 0 0 0.75rem auto;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #ffeb99;
+    }
+  }
 
   // Cache le bandeau des filtres dashboard avec celui dédié au choix des organisations.
   > .container > .tiled:has(> .parameter-container) {
