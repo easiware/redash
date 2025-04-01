@@ -60,6 +60,8 @@ function PublicDashboard({ dashboard }) {
       )}
       <div id="dashboard-container">
         <PlainButton className="public-dashboard-refreshButton" onClick={() => setIsRefreshing(true)}>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label className="public-dashboard-label">Mettre à jour les données</label>
             <i className="fa fa-refresh" aria-hidden="true"></i>
         </PlainButton>
         <DashboardGrid
