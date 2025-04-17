@@ -1,3 +1,8 @@
+/* eslint-disable import/first */
+import moment from "moment";
+import "moment/locale/fr";
+moment.locale("fr");
+
 import React, { useState, useEffect } from "react";
 import routes from "@/services/routes";
 import Router from "./Router";

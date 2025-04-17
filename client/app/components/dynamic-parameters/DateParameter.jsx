@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { getDynamicDateFromString } from "@/services/parameters/DateParameter";
 import DynamicDatePicker from "@/components/dynamic-parameters/DynamicDatePicker";
+import ConfigProvider from "antd/lib/config-provider";
+import frFR from "antd/lib/locale/fr_FR";
 
 const DYNAMIC_DATE_OPTIONS = [
   {
-    name: "Today/Now",
+    name: "Aujourd'hui/Maintenant",
     value: getDynamicDateFromString("d_now"),
     label: () =>
       getDynamicDateFromString("d_now")
@@ -13,7 +15,7 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("MMM D"),
   },
   {
-    name: "Yesterday",
+    name: "Hier",
     value: getDynamicDateFromString("d_yesterday"),
     label: () =>
       getDynamicDateFromString("d_yesterday")
@@ -24,11 +26,13 @@ const DYNAMIC_DATE_OPTIONS = [
 
 function DateParameter(props) {
   return (
-    <DynamicDatePicker
-      dynamicButtonOptions={{ options: DYNAMIC_DATE_OPTIONS }}
-      {...props}
-      dateOptions={{ "aria-label": "Parameter date value" }}
-    />
+    <ConfigProvider locale={frFR}>
+      <DynamicDatePicker
+        dynamicButtonOptions={{ options: DYNAMIC_DATE_OPTIONS }}
+        {...props}
+        dateOptions={{ "aria-label": "Parameter date value" }}
+      />
+    </ConfigProvider>
   );
 }
 

@@ -14,12 +14,15 @@ const DYNAMIC_PREFIX = "d_";
 
 const DYNAMIC_DATES = {
   now: {
-    name: "Today/Now",
-    value: () => moment(),
+    name: "Aujourd'hui/Maintenant",
+    value: () => moment().locale("fr"),
   },
   yesterday: {
-    name: "Yesterday",
-    value: () => moment().subtract(1, "day"),
+    name: "Hier",
+    value: () =>
+      moment()
+        .subtract(1, "day")
+        .locale("fr"),
   },
 };
 
