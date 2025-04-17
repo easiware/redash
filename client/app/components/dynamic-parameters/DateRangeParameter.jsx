@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import { includes } from "lodash";
 import { getDynamicDateRangeFromString } from "@/services/parameters/DateRangeParameter";
 import DynamicDateRangePicker from "@/components/dynamic-parameters/DynamicDateRangePicker";
+import ConfigProvider from "antd/lib/config-provider";
+import frFR from "antd/lib/locale/fr_FR";
 
 const DYNAMIC_DATE_OPTIONS = [
   {
-    name: "This week",
+    name: "Cette semaine",
     value: getDynamicDateRangeFromString("d_this_week"),
     label: () =>
       getDynamicDateRangeFromString("d_this_week")
@@ -18,7 +20,7 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("MMM D"),
   },
   {
-    name: "This month",
+    name: "Ce mois",
     value: getDynamicDateRangeFromString("d_this_month"),
     label: () =>
       getDynamicDateRangeFromString("d_this_month")
@@ -26,7 +28,7 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("MMMM"),
   },
   {
-    name: "This year",
+    name: "Cette année",
     value: getDynamicDateRangeFromString("d_this_year"),
     label: () =>
       getDynamicDateRangeFromString("d_this_year")
@@ -34,7 +36,7 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("YYYY"),
   },
   {
-    name: "Last week",
+    name: "La semaine dernière",
     value: getDynamicDateRangeFromString("d_last_week"),
     label: () =>
       getDynamicDateRangeFromString("d_last_week")
@@ -46,7 +48,7 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("MMM D"),
   },
   {
-    name: "Last month",
+    name: "Le mois dernier",
     value: getDynamicDateRangeFromString("d_last_month"),
     label: () =>
       getDynamicDateRangeFromString("d_last_month")
@@ -54,7 +56,7 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("MMMM"),
   },
   {
-    name: "Last year",
+    name: "L'année dernière",
     value: getDynamicDateRangeFromString("d_last_year"),
     label: () =>
       getDynamicDateRangeFromString("d_last_year")
@@ -62,47 +64,47 @@ const DYNAMIC_DATE_OPTIONS = [
         .format("YYYY"),
   },
   {
-    name: "Last 7 days",
+    name: "Les 7 derniers jours",
     value: getDynamicDateRangeFromString("d_last_7_days"),
     label: () =>
       getDynamicDateRangeFromString("d_last_7_days")
         .value()[0]
-        .format("MMM D") + " - Today",
+        .format("MMM D") + " - Aujourd'hui",
   },
   {
-    name: "Last 14 days",
+    name: "Les 14 derniers jours",
     value: getDynamicDateRangeFromString("d_last_14_days"),
     label: () =>
       getDynamicDateRangeFromString("d_last_14_days")
         .value()[0]
-        .format("MMM D") + " - Today",
+        .format("MMM D") + " - Aujourd'hui",
   },
   {
-    name: "Last 30 days",
+    name: "Les 30 derniers jours",
     value: getDynamicDateRangeFromString("d_last_30_days"),
     label: () =>
       getDynamicDateRangeFromString("d_last_30_days")
         .value()[0]
-        .format("MMM D") + " - Today",
+        .format("MMM D") + " - Aujourd'hui",
   },
   {
-    name: "Last 60 days",
+    name: "Les 60 derniers jours",
     value: getDynamicDateRangeFromString("d_last_60_days"),
     label: () =>
       getDynamicDateRangeFromString("d_last_60_days")
         .value()[0]
-        .format("MMM D") + " - Today",
+        .format("MMM D") + " - Aujourd'hui",
   },
   {
-    name: "Last 90 days",
+    name: "Les 90 derniers jours",
     value: getDynamicDateRangeFromString("d_last_90_days"),
     label: () =>
       getDynamicDateRangeFromString("d_last_90_days")
         .value()[0]
-        .format("MMM D") + " - Today",
+        .format("MMM D") + " - Aujourd'hui",
   },
   {
-    name: "Last 12 months",
+    name: "Les 12 derniers mois",
     value: getDynamicDateRangeFromString("d_last_12_months"),
     label: null,
   },
@@ -110,7 +112,7 @@ const DYNAMIC_DATE_OPTIONS = [
 
 const DYNAMIC_DATETIME_OPTIONS = [
   {
-    name: "Today",
+    name: "Aujourd'hui",
     value: getDynamicDateRangeFromString("d_today"),
     label: () =>
       getDynamicDateRangeFromString("d_today")
@@ -118,7 +120,7 @@ const DYNAMIC_DATETIME_OPTIONS = [
         .format("MMM D"),
   },
   {
-    name: "Yesterday",
+    name: "Hier",
     value: getDynamicDateRangeFromString("d_yesterday"),
     label: () =>
       getDynamicDateRangeFromString("d_yesterday")
@@ -130,7 +132,11 @@ const DYNAMIC_DATETIME_OPTIONS = [
 
 function DateRangeParameter(props) {
   const options = includes(props.type, "datetime-range") ? DYNAMIC_DATETIME_OPTIONS : DYNAMIC_DATE_OPTIONS;
-  return <DynamicDateRangePicker {...props} dynamicButtonOptions={{ options }} />;
+  return (
+    <ConfigProvider locale={frFR}>
+      <DynamicDateRangePicker {...props} dynamicButtonOptions={{ options }} />
+    </ConfigProvider>
+  );
 }
 
 DateRangeParameter.propTypes = {

@@ -21,7 +21,7 @@ function ParameterApplyButton({ paramCount, onClick }) {
       <Badge count={paramCount}>
         <Tooltip title={paramCount ? `${KeyboardShortcuts.modKey} + Enter` : null}>
           <span>
-            <Button onClick={onClick}>{icon} Apply Changes</Button>
+            <Button onClick={onClick}>{icon} Appliquer</Button>
           </span>
         </Tooltip>
       </Badge>

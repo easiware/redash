@@ -76,7 +76,7 @@ DynamicButton.defaultProps = {
   selectedDynamicValue: null,
   onSelect: () => {},
   enabled: false,
-  staticValueLabel: "Back to Static Value",
+  staticValueLabel: "Retour à la valeur statique",
 };
 
 export default DynamicButton;

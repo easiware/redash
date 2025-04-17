@@ -21,11 +21,11 @@ const untilNow = (from, now = () => moment()) => (withNow = true) => [from(), wi
 
 const DYNAMIC_DATE_RANGES = {
   today: {
-    name: "Today",
+    name: "Aujourd'hui",
     value: () => [moment().startOf("day"), moment().endOf("day")],
   },
   yesterday: {
-    name: "Yesterday",
+    name: "Hier",
     value: () => [
       moment()
         .subtract(1, "day")
@@ -36,19 +36,19 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   this_week: {
-    name: "This week",
+    name: "Cette semaine",
     value: () => [moment().startOf("week"), moment().endOf("week")],
   },
   this_month: {
-    name: "This month",
+    name: "Ce mois",
     value: () => [moment().startOf("month"), moment().endOf("month")],
   },
   this_year: {
-    name: "This year",
+    name: "Cette année",
     value: () => [moment().startOf("year"), moment().endOf("year")],
   },
   last_week: {
-    name: "Last week",
+    name: "La semaine dernière",
     value: () => [
       moment()
         .subtract(1, "week")
@@ -59,7 +59,7 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   last_month: {
-    name: "Last month",
+    name: "Le mois dernier",
     value: () => [
       moment()
         .subtract(1, "month")
@@ -70,7 +70,7 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   last_year: {
-    name: "Last year",
+    name: "L'année dernière",
     value: () => [
       moment()
         .subtract(1, "year")
@@ -81,19 +81,19 @@ const DYNAMIC_DATE_RANGES = {
     ],
   },
   last_hour: {
-    name: "Last hour",
+    name: "La dernière heure",
     value: untilNow(() => moment().subtract(1, "hour")),
   },
   last_8_hours: {
-    name: "Last 8 hours",
+    name: "Les 8 dernières heures",
     value: untilNow(() => moment().subtract(8, "hour")),
   },
   last_24_hours: {
-    name: "Last 24 hours",
+    name: "Les 24 dernières heures",
     value: untilNow(() => moment().subtract(24, "hour")),
   },
   last_7_days: {
-    name: "Last 7 days",
+    name: "Les 7 derniers jours",
     value: untilNow(
       () =>
         moment()
@@ -103,7 +103,7 @@ const DYNAMIC_DATE_RANGES = {
     ),
   },
   last_14_days: {
-    name: "Last 14 days",
+    name: "Les 14 derniers jours",
     value: untilNow(
       () =>
         moment()
@@ -113,7 +113,7 @@ const DYNAMIC_DATE_RANGES = {
     ),
   },
   last_30_days: {
-    name: "Last 30 days",
+    name: "Les 30 derniers jours",
     value: untilNow(
       () =>
         moment()
@@ -123,7 +123,7 @@ const DYNAMIC_DATE_RANGES = {
     ),
   },
   last_60_days: {
-    name: "Last 60 days",
+    name: "Les 60 derniers jours",
     value: untilNow(
       () =>
         moment()
@@ -133,7 +133,7 @@ const DYNAMIC_DATE_RANGES = {
     ),
   },
   last_90_days: {
-    name: "Last 90 days",
+    name: "Les 90 derniers jours",
     value: untilNow(
       () =>
         moment()
@@ -143,7 +143,7 @@ const DYNAMIC_DATE_RANGES = {
     ),
   },
   last_12_months: {
-    name: "Last 12 months",
+    name: "Les 12 derniers mois",
     value: untilNow(
       () =>
         moment()

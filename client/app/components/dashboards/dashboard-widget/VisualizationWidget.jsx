@@ -34,28 +34,28 @@ function visualizationWidgetMenuOptions({ widget, canEditDashboard, onParameters
     <Menu.Item key="download_csv" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <Link href={downloadLink("csv")} download={downloadName("csv")} target="_self">
-          Download as CSV File
+          Télécharger le fichier CSV
         </Link>
       ) : (
-        "Download as CSV File"
+        "Télécharger le fichier CSV"
       )}
     </Menu.Item>,
     <Menu.Item key="download_tsv" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <Link href={downloadLink("tsv")} download={downloadName("tsv")} target="_self">
-          Download as TSV File
+          Télécharger le fichier TSV
         </Link>
       ) : (
-        "Download as TSV File"
+        "Télécharger le fichier TSV"
       )}
     </Menu.Item>,
     <Menu.Item key="download_excel" disabled={isQueryResultEmpty}>
       {!isQueryResultEmpty ? (
         <Link href={downloadLink("xlsx")} download={downloadName("xlsx")} target="_self">
-          Download as Excel File
+          Télécharger le fichier Excel
         </Link>
       ) : (
-        "Download as Excel File"
+        "Télécharger le fichier Excel"
       )}
     </Menu.Item>,
     (canViewQuery || canEditParameters) && <Menu.Divider key="divider" />,
