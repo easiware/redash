@@ -435,6 +435,13 @@ class QueryResult {
   }
 
   getLink(queryId, fileType, apiKey) {
+    const publicDashboardPath = "/public/dashboards/";
+
+    if (window.location.pathname.startsWith(publicDashboardPath)) {
+      const [, token] = window.location.pathname.split(publicDashboardPath);
+      return `public/${token}/queries/${queryId}/results/${this.getId()}.${fileType}`;
+    }
+
     let link = `api/queries/${queryId}/results/${this.getId()}.${fileType}`;
     if (apiKey) {
       link = `${link}?api_key=${apiKey}`;
