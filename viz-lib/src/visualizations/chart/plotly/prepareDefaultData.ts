@@ -1,7 +1,7 @@
 import { isNil, extend, each, includes, map, sortBy, toString } from "lodash";
 import chooseTextColorForBackground from "@/lib/chooseTextColorForBackground";
 import { AllColorPaletteArrays, ColorPaletteTypes } from "@/visualizations/ColorPalette";
-import { cleanNumber, normalizeValue, getSeriesAxis } from "./utils";
+import { cleanNumber, normalizeValue, getSeriesAxis, normalizeValueForSorting } from "./utils";
 
 function getSeriesColor(options: any, seriesOptions: any, seriesIndex: any, numSeries: any) {
   // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
@@ -87,7 +87,9 @@ function prepareSeries(series: any, options: any, numSeries: any, additionalOpti
   const seriesYAxis = getSeriesAxis(series, options);
 
   // Sort by x - `Map` preserves order of items
-  const data = options.sortX ? sortBy(series.data, d => normalizeValue(d.x, options.xAxis.type)) : series.data;
+  const data = options.sortX
+    ? sortBy(series.data, d => normalizeValueForSorting(d.x, options.xAxis.type))
+    : series.data;
 
   // For bubble/scatter charts `y` may be any (similar to `x`) - numeric is only bubble size;
   // for other types `y` is always number

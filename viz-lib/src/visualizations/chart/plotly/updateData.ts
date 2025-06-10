@@ -1,6 +1,6 @@
-import { isNil, each, extend, filter, identity, includes, map, sortBy } from "lodash";
+import { isNil, each, extend, filter, includes, map, sortBy } from "lodash";
 import { createNumberFormatter, formatSimpleTemplate } from "@/lib/value-format";
-import { normalizeValue } from "./utils";
+import { normalizeValue, normalizeValueForSorting } from "./utils";
 
 function shouldUseUnifiedXAxis(options: any) {
   return options.sortX && options.xAxis.type === "category" && options.globalSeriesType !== "box";
@@ -129,7 +129,7 @@ function updatePercentValues(seriesList: any, options: any) {
   }
 }
 
-function getUnifiedXAxisValues(seriesList: any, sorted: any) {
+function getUnifiedXAxisValues(seriesList: any, options: any) {
   const set = new Set();
   each(seriesList, series => {
     // `Map.forEach` will walk items in insertion order
@@ -139,11 +139,11 @@ function getUnifiedXAxisValues(seriesList: any, sorted: any) {
   });
 
   const result = [...set];
-  return sorted ? sortBy(result, identity) : result;
+  return options.sortX ? sortBy(result, x => normalizeValueForSorting(x, options.xAxis.type)) : result;
 }
 
 function updateUnifiedXAxisValues(seriesList: any, options: any) {
-  const unifiedX = getUnifiedXAxisValues(seriesList, options.sortX);
+  const unifiedX = getUnifiedXAxisValues(seriesList, options);
   const defaultY = options.missingValuesAsZero ? 0.0 : null;
   each(seriesList, series => {
     series.x = [];
