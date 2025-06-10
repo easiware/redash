@@ -34,13 +34,17 @@ export function normalizeValueForSorting(value: any, axisType: any, dateTimeForm
     return value.format(dateTimeFormat);
   }
 
+  if (typeof value !== "string") {
+    return value;
+  }
+
   const endsInYearRegex = /\d{4}$/m;
 
-  if (typeof value === "string" && endsInYearRegex.test(value)) {
+  if (endsInYearRegex.test(value)) {
     // On doit retraduire les mois vers l'anglais pour que les dates soient parsées correctement.
     // Dès lors que les 3 premières lettres correspondent à l'anglais, le constructeur Date parse correctement (Jan, Mar, Sep, Oct, Nov).
     const replaced = value
-      .replace("Févr", "Feb")
+      .replace("Fév", "Feb")
       .replace("Avr", "Apr")
       .replace("Mai", "May")
       .replace("Juin", "Jun")
@@ -57,6 +61,25 @@ export function normalizeValueForSorting(value: any, axisType: any, dateTimeForm
     }
 
     return time;
+  }
+
+  const frenchMonths = [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
+  ];
+
+  if (frenchMonths.includes(value)) {
+    return frenchMonths.indexOf(value);
   }
 
   return value;
