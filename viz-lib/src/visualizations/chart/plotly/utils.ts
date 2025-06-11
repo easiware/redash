@@ -82,5 +82,17 @@ export function normalizeValueForSorting(value: any, axisType: any, dateTimeForm
     return frenchMonths.indexOf(value);
   }
 
+  const weekDays = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+
+  if (weekDays.includes(value)) {
+    return weekDays.indexOf(value);
+  }
+
+  const number = Number(value);
+
+  if (!Number.isNaN(number)) {
+    return number;
+  }
+
   return value;
 }
