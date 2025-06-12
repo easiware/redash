@@ -3,7 +3,11 @@ import { createNumberFormatter, formatSimpleTemplate } from "@/lib/value-format"
 import { normalizeValue, normalizeValueForSorting } from "./utils";
 
 function shouldUseUnifiedXAxis(options: any) {
-  return options.sortX && options.xAxis.type === "category" && options.globalSeriesType !== "box";
+  return (
+    options.sortX &&
+    (options.xAxis.type === "category" || options.xAxis.type === "-") &&
+    options.globalSeriesType !== "box"
+  );
 }
 
 function defaultFormatSeriesText(item: any) {
