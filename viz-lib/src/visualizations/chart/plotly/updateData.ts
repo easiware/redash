@@ -206,11 +206,11 @@ function updateDefaultData(seriesList: any, options: any) {
   // Apply "percent values" modification
   updatePercentValues(seriesList, options);
 
-  if (!options.series.stacking) {
+  // if (!options.series.stacking) {
     if (shouldUseUnifiedXAxis(options)) {
       updateUnifiedXAxisValues(seriesList, options);
     }
-  }
+  // }
 
   // Finally - update text labels
   updateSeriesText(seriesList, options);

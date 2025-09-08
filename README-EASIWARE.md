@@ -69,5 +69,6 @@ https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/
 
 ```bash
 yarn install
+npm run build
 ./build-push-docker.sh
 ```
